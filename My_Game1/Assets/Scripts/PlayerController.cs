@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
+    public UnityEvent Death;
+
     public float speed;
     public float jumpForce;
     private float moveInput;
@@ -71,6 +74,14 @@ public class PlayerController : MonoBehaviour
         else if (moveInput > 0)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameObject collisionObject = collision.gameObject;
+        if (collisionObject.CompareTag("wallDeath")) 
+        {
+            Death?.Invoke();
         }
     }
 }

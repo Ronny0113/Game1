@@ -66,15 +66,6 @@ public class PlayerController : MonoBehaviour
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
-
-        if (moveInput < 0)
-        {
-            transform.eulerAngles = new Vector3(0, 180, 0);
-        }
-        else if (moveInput > 0)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

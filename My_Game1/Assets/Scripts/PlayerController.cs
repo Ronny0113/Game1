@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
     public UnityEvent Death;
+    public UnityEvent Win;
 
     public float speed;
     public float jumpForce;
@@ -83,6 +84,10 @@ public class PlayerController : MonoBehaviour
         if (collisionObject.CompareTag("wallDeath")) 
         {
             Death?.Invoke();
+        }
+        if (collisionObject.CompareTag("wallWin"))
+        {
+            Win?.Invoke();
         }
     }
 }
